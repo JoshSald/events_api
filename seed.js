@@ -1,6 +1,6 @@
 import { sequelize, User, Event } from "./db.js";
 
-const seedDB = async () => {
+export const seedDB = async () => {
   await sequelize.sync({ force: true });
 
   const users = [
@@ -89,12 +89,12 @@ const seedDB = async () => {
   await Event.bulkCreate(events, { individualHooks: true });
 };
 
-try {
-  await seedDB();
-  console.log("Database seeded");
-} catch (error) {
-  console.error({ error });
-} finally {
-  await sequelize.close();
-  console.log("Database connection closed");
-}
+// try {
+//   await seedDB();
+//   console.log("Database seeded");
+// } catch (error) {
+//   console.error({ error });
+// } finally {
+//   await sequelize.close();
+//   console.log("Database connection closed");
+// }
