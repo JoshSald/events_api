@@ -1,13 +1,26 @@
-import { Sequelize, DataTypes } from "sequelize";
-
+import { Sequelize } from "sequelize";
 import UserModel from "./models/users.js";
 import EventModel from "./models/events.js";
 
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "./db.db",
-  logging: false,
-});
+const connectionString = process.env.DB_URL;
+
+const sequelize = connectionString
+  ? new Sequelize(connectionString, {
+      dialect: "postgres",
+      protocol: "postgres",
+      logging: false,
+      dialectOptions: {
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
+      },
+    })
+  : new Sequelize({
+      dialect: "sqlite",
+      storage: "./db.db",
+      logging: false,
+    });
 
 const User = UserModel(sequelize);
 const Event = EventModel(sequelize);
