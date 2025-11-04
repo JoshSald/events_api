@@ -1,9 +1,8 @@
-import Joi from "joi";
-
 export const eventSchema = {
   POST: Joi.object({
     title: Joi.string().min(3).max(255).required(),
     description: Joi.string().max(5000).optional(),
+    aiCopy: Joi.string().max(10000).optional(),
     startDate: Joi.date().iso().required(),
     endDate: Joi.date().iso().required(),
     eventType: Joi.string()
@@ -25,6 +24,7 @@ export const eventSchema = {
   PUT: Joi.object({
     title: Joi.string().min(3).max(255).optional(),
     description: Joi.string().max(5000).optional(),
+    aiCopy: Joi.string().max(10000).optional(),
     startDate: Joi.date().iso().optional(),
     endDate: Joi.date().iso().optional(),
     eventType: Joi.string()

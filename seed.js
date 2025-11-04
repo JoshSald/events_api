@@ -1,7 +1,7 @@
 import { sequelize, User, Event } from "./db.js";
 
 export const seedDB = async () => {
-  await sequelize.sync({ force: false });
+  await sequelize.sync({ alter: true });
 
   const users = [
     {
@@ -28,6 +28,7 @@ export const seedDB = async () => {
     {
       title: "Summer Festival",
       description: "A fun summer festival with music and food",
+      aiCopy: "",
       startDate: new Date("2025-10-30T09:00:00Z"),
       endDate: new Date("2025-10-30T13:00:00Z"),
       eventType: "Live Music",
@@ -39,6 +40,7 @@ export const seedDB = async () => {
     {
       title: "Tech Conference",
       description: "A conference about the latest in tech",
+      aiCopy: "",
       startDate: new Date("2025-11-05T08:00:00Z"),
       endDate: new Date("2025-11-05T16:00:00Z"),
       eventType: "Tech Conference",
@@ -51,6 +53,7 @@ export const seedDB = async () => {
       title: "Oktoberfest",
       description:
         "A traditional German beer festival held annually in Munich.",
+      aiCopy: "",
       startDate: new Date("2024-09-21T10:00:00Z"),
       endDate: new Date("2024-09-21T23:59:00Z"),
       eventType: "Street Festival",
@@ -63,6 +66,7 @@ export const seedDB = async () => {
       title: "Berlin Marathon",
       description:
         "One of the world’s largest and most popular marathons held annually in Berlin.",
+      aiCopy: "",
       startDate: new Date("2024-09-29T07:00:00Z"),
       endDate: new Date("2024-09-29T15:00:00Z"),
       eventType: "Marathon",
@@ -75,6 +79,7 @@ export const seedDB = async () => {
       title: "Christmas Market",
       description:
         "A traditional German Christmas market held in the heart of Berlin.",
+      aiCopy: "",
       startDate: new Date("2024-12-01T10:00:00Z"),
       endDate: new Date("2024-12-01T20:00:00Z"),
       eventType: "Holiday Market",

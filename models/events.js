@@ -21,6 +21,16 @@ export default (sequelize) => {
         },
       },
     },
+    aiCopy: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+      validate: {
+        len: {
+          args: [0, 10000],
+          msg: "AI copy must be a maximum of 10,000 characters",
+        },
+      },
+    },
     startDate: {
       type: DataTypes.DATE,
       allowNull: false,
