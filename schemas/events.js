@@ -1,3 +1,5 @@
+import Joi from "joi";
+
 export const eventSchema = {
   POST: Joi.object({
     title: Joi.string().min(3).max(255).required(),
