@@ -90,8 +90,24 @@ export const seedDB = async () => {
     },
   ];
 
-  await User.bulkCreate(users, { individualHooks: true });
-  await Event.bulkCreate(events, { individualHooks: true });
+  await User.bulkCreate(users, {
+    individualHooks: true,
+    updateOnDuplicate: ["name", "password", "img", "updatedAt"],
+  });
+  await Event.bulkCreate(events, {
+    individualHooks: true,
+    updateOnDuplicate: [
+      "description",
+      "aiCopy",
+      "startDate",
+      "endDate",
+      "eventType",
+      "location",
+      "latitude",
+      "longitude",
+      "organizerId",
+    ],
+  });
 };
 
 try {
